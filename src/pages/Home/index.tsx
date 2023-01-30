@@ -1,10 +1,11 @@
 import { Header } from "../../components/Header";
+import { Profile } from "../../components/Profile";
 
 export function Home() {
   return (
     <div>
       <Header />
-      <h1>Home</h1>
+      <Profile />
     </div>
   );
 }
