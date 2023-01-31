@@ -1,11 +1,11 @@
-import { Header } from "../../components/Header";
 import { Profile } from "../../components/Profile";
+import { Featured } from "./components/Featured";
 
 export function Home() {
   return (
     <div>
-      <Header />
       <Profile />
+      <Featured />
     </div>
   );
 }
