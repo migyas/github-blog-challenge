@@ -7,41 +7,61 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   AboutMe,
+  ButtonLink,
   Container,
   Content,
   HeaderWithLink,
   SocialContainer,
 } from "./styles";
+import { useCallback, useEffect, useState } from "react";
+import { api } from "../../../../services/api";
+
+interface UserData {
+  login: string;
+  name: string;
+  followers: number;
+  company: string;
+  bio: string;
+  avatar_url: string;
+  html_url: string;
+}
 
 export function Profile() {
+  const [user, setUser] = useState({} as UserData);
+
+  const getUser = useCallback(async () => {
+    const { data } = await api.get("/users/migyas");
+    setUser(data);
+  }, []);
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <Container>
-      <img src="https://github.com/migyas.png" alt="Foto do perfil" />
+      <img src={user.avatar_url} alt="Foto do perfil" />
       <Content>
         <HeaderWithLink>
-          <strong>Yan Dias</strong>
-          <button>
-            <span>GITHUB</span>
+          <strong>{user.name}</strong>
+          <ButtonLink to={user.html_url ?? "#"} target="_blank">
+            <span>Github</span>
             <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </button>
+          </ButtonLink>
         </HeaderWithLink>
-        <AboutMe>
-          Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-          viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
-          pulvinar vel mass.
-        </AboutMe>
+        <AboutMe>{user.bio ?? "Nenhuma bio foi registrada"}</AboutMe>
         <SocialContainer>
           <div>
             <FontAwesomeIcon icon={faGithub} />
-            <span>migyas</span>
+            <span>{user.login}</span>
           </div>
           <div>
             <FontAwesomeIcon icon={faBuilding} />
-            <span>Yan Dev TI</span>
+            <span>{user.company ?? "----"}</span>
           </div>
           <div>
             <FontAwesomeIcon icon={faUserGroup} />
-            <span>5 seguidores</span>
+            <span>{user.followers ?? "0"} seguidores</span>
           </div>
         </SocialContainer>
       </Content>

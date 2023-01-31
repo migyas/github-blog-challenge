@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -23,6 +24,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 export const HeaderWithLink = styled.header`
@@ -37,26 +39,28 @@ export const HeaderWithLink = styled.header`
     font-weight: bold;
     line-height: 1.3;
   }
+`;
 
-  button {
-    display: flex;
-    align-items: center;
-    border: 0;
-    background: transparent;
-    color: ${(props) => props.theme["blue-300"]};
-    cursor: pointer;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    font-weight: bold;
+export const ButtonLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  color: ${(props) => props.theme["blue-300"]};
+  cursor: pointer;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
 
-    span {
-      line-height: 1.6;
-    }
+  span {
+    line-height: 1.6;
+  }
 
-    &:hover {
-      border-bottom: 1px solid ${(props) => props.theme["blue-300"]};
-      transition: border-bottom 0.2s;
-    }
+  &:hover {
+    border-bottom: 1px solid ${(props) => props.theme["blue-300"]};
+    transition: border-bottom 0.2s;
   }
 `;
 

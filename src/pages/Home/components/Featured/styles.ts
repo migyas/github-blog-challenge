@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.main`
@@ -45,12 +46,17 @@ export const Container = styled.main`
 `;
 
 export const SectionList = styled.section`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+`;
+
+export const LinkArticle = styled(Link)`
+  text-decoration: none;
 
   article {
     max-width: 26rem;
-    max-height: 16.25rem;
+    min-height: 15rem;
     padding: 2rem;
     flex-direction: column;
     background: ${(props) => props.theme["gray-600"]};
@@ -83,6 +89,13 @@ export const SectionList = styled.section`
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
+      color: ${(props) => props.theme["color-text"]};
     }
+  }
+
+  &:hover {
+    border: 1px solid ${(props) => props.theme["gray-400"]};
+    border-radius: 10px;
+    transition: border 0.3s;
   }
 `;
