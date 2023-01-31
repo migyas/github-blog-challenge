@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -30,28 +31,30 @@ export const HeaderWithLink = styled.header`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1.25rem;
+`;
 
-  button {
-    display: flex;
-    align-items: center;
-    border: 0;
-    background: transparent;
-    color: ${(props) => props.theme["blue-300"]};
-    cursor: pointer;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-bottom: 1px solid transparent;
+export const LinkButton = styled(Link)`
+  text-decoration: none;
 
-    span {
-      line-height: 1.3;
-    }
+  display: flex;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  color: ${(props) => props.theme["blue-300"]};
+  cursor: pointer;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
 
-    &:hover {
-      border-bottom: 1px solid ${(props) => props.theme["blue-300"]};
-      transition: border-bottom 0.2s;
-    }
+  span {
+    line-height: 1.3;
+  }
+
+  &:hover {
+    border-bottom: 1px solid ${(props) => props.theme["blue-300"]};
+    transition: border-bottom 0.2s;
   }
 `;
 

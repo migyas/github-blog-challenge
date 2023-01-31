@@ -37,7 +37,10 @@ export function Featured() {
       </form>
       <SectionList>
         {publications.map((publication) => (
-          <LinkArticle to={`/${publication.number ?? "0"}`}>
+          <LinkArticle
+            to={`/${publication.number ?? "0"}`}
+            key={publication.number}
+          >
             <article>
               <header>
                 <strong>{publication.title}</strong>
